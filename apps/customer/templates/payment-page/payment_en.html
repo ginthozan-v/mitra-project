@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="../../js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.timers-1.2.js"></script>
+    <script type="text/javascript" src="../../js/jquery.url.js"></script>
+    <script type="text/javascript" src="../../js/jquery.payment.js"></script>
+    <script type="text/javascript">
+      $(document).payment({
+        language: 'en',
+        messageAjaxError: 'Out of service. Please, try later.',
+        messageTimeRemaining: 'The current session will expire in #MIN#:#SEC#',
+        orderId: 'orderNumber',
+        paymentAction: '../../rest/processform.do',
+        getSessionStatusAction: '../../rest/getSessionStatus.do',
+        showErrorAction: '../../rest/showErrors.do',
+        updatePage: function (data) {
+          $('#orderNumber').text(data['orderNumber']);
+          $('#amount').text(data['amount']);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col bg-center bg-cover" style="background-image: url(images/auth-bg.jpg)">
+      <div class="grow grid place-items-center px-3 py-5">
+        <div class="max-w-lg w-full min-h-[50%] rounded-md bg-white overflow-hidden">
+          <div class="shadow flex items-center justify-center p-4">
+            <a href="/">
+              <img src="images/myt-logo.svg" alt="MT Cloud Portal Logo" class="h-14" />
+            </a>
+          </div>
+
+          <div class="flex flex-col items-center p-4 pb-5">
+            <div class="form-field flex">
+              <label>Order: </label>
+              <div class="inline" id="orderNumber"></div>
+            </div>
+            <div class="form-field flex">
+              <label>Amount: </label>
+              <div class="inline" id="amount"></div>
+            </div>
+            <hr />
+
+            <div class="form-field" style="margin-top: 0;">
+              <div id="errorBlock" style="color: red"></div>
+            </div>
+            <div class="form-field" style="margin: 15px 0;">
+              <div id="numberCountdown"></div>
+            </div>
+
+            <form class="w-full formPayment" name="PaymentForm" action="#" method="post" id="formPayment">
+              <input type="hidden" id="expiry" />
+              <input type="hidden" id="mdOrder" />
+              <input type="hidden" id="location" value="/../" />
+              <input type="hidden" id="language" value="en" />
+
+              <div class="form-field">
+                <label>Card Number: </label>
+                <input class="form-control" name="$PAN" id="iPAN" maxlength="19" type="text" autocomplete="off" />
+              </div>
+              <div class="form-field">
+                <label>Expiry Date: </label>
+                <select class="form-control" name="MM" id="month">
+                  <option value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+
+                <select class="form-control" name="YYYY" id="year" style="margin-left: 5px">
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label>Name on Card: </label>
+                <input class="form-control" name="TEXT" id="iTEXT" maxlength="90" type="text" autocomplete="off" />
+              </div>
+              <div class="form-field">
+                <label>Security Code: </label>
+                <input class="form-control" name="$CVC" id="iCVC" maxlength="4" type="password" autocomplete="off" />
+              </div>
+              <div class="form-field text-center">
+                <input class="btnSubmit" name="SendPayment2" id="buttonPayment" type="button" value="Submit" />
+              </div>
+            </form>
+
+            <div class="form-field" id="indicatorImage" style="display: none"><img src="../../img/ajaxloader.gif" height="19" width="220" alt="indicator" /></div>
+            <div class="form-field" id="infoBlock"></div>
+
+            <form class="w-full" id="acs" method="post" action="">
+              <input type="hidden" id="MD" name="MD" />
+              <input type="hidden" id="PaReq" name="PaReq" />
+              <input type="hidden" id="TermUrl" name="TermUrl" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer class="shrink-0 px-3 py-2 bg-mtgreen text-white text-center mt-5">
+        <a class="" href="/">2022 © my.t</a>
+      </footer>
+    </div>
+  </body>
+</html>

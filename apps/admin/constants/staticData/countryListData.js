@@ -1,0 +1,36 @@
+export const tableData = [{
+    id: '1',
+    name: 'America',
+    flag: 'Flag',
+    countryCode: '1234',
+    isActive: false,
+},
+{
+    id: '2',
+    name: 'America',
+    flag: 'Flag',
+    countryCode: '1234',
+    isActive: false,
+},
+{
+    id: '3',
+    name: 'America',
+    flag: 'Flag',
+    countryCode: '1234',
+    isActive: false,
+},
+{
+    id: '4',
+    name: 'America',
+    flag: 'Flag',
+    countryCode: '1234',
+    isActive: true,
+},
+{
+    id: '5',
+    name: 'America',
+    flag: 'Flag',
+    countryCode: '1234',
+    isActive: true,
+},
+];

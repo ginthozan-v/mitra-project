@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply overflow-hidden;
+    }
+
+    .subnav:empty {
+        display: none;
+    }
+
+    /* toggle switch */
+    .toggle-checkbox:checked {
+        @apply: right-0 border-green-400;
+        right: 0;
+        border-color: #68D391;
+    }
+
+    .toggle-checkbox:checked+.toggle-label {
+        @apply: bg-green-400;
+        background-color: #68D391;
+    }
+
+    .mt-confirmationBtnYes {
+        @apply rounded w-44 h-10 text-center text-sky-900 font-semibold bg-skyBlue hover:bg-skyBlue/70 transition-colors
+    }
+
+    .mt-confirmationBtnNo {
+        @apply rounded w-44 h-10 text-sky-700 font-semibold bg-skyBlue/20 hover:bg-skyBlue/10 transition-colors
+    }
+
+  
+}
+

@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ${DEPLOYMENT_NAME}
+  name: ${DEPLOYMENT_NAME}
+  namespace: ${NAMESPACE}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${DEPLOYMENT_NAME}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ${DEPLOYMENT_NAME}
+        build_number: "${BUILD_NUMBER}"
+        elk_index_prefix: msa
+    spec:
+      hostAliases:
+        - ip: 192.168.0.153
+          hostnames:
+            - portal-dev-is-console.mytcloud.mu
+        - ip: 192.168.0.153
+          hostnames:
+            - portal-uat-is-console.mytcloud.mu
+        - ip: 192.168.0.153
+          hostnames:
+            - portal-qa-is-console.mytcloud.mu
+      containers:
+        - image: ${IMAGE_NAME}
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: environment
+              value: "${NAMESPACE}"
+            - name: appName
+              value: "${DEPLOYMENT_NAME}"
+            - name: configUrl
+              value: "${CONFIG_MSA_URL}"
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - nc -z localhost 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - nc -z localhost 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          name: ${DEPLOYMENT_NAME}
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          resources:
+            requests:
+              memory: ${REQUEST_MEMORY}
+              cpu: ${REQUEST_CPU}
+            limits:
+              memory: ${LIMIT_MEMORY}
+              cpu: ${LIMIT_CPU}
+          terminationMessagePath: /${NAMESPACE}/termination-log
+          terminationMessagePolicy: File
+      imagePullSecrets:
+        - name: ${NEXUS_CRED}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ${NAMESPACE}-${DEPLOYMENT_COMPONENT}-app-ip-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: ${NAMESPACE}-${DEPLOYMENT_COMPONENT}-app.mytcloud.mu
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ${DEPLOYMENT_NAME}-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - ${NAMESPACE}-${DEPLOYMENT_COMPONENT}-app.mytcloud.mu
+      secretName: ${SSL_SECRET_NAME}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ${DEPLOYMENT_NAME}
+  name: ${DEPLOYMENT_NAME}-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: ${DEPLOYMENT_NAME}
+  sessionAffinity: None
+  type: ClusterIP

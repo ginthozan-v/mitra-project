@@ -1,0 +1,41 @@
+export const tableData = [{
+        id: '1',
+        category: 'America',
+        questionEn: 'America',
+        questionFr: 'America',
+        priority: '1',
+        isActive: false,
+    },
+    {
+        id: '2',
+        category: 'America',
+        questionEn: 'America',
+        questionFr: 'America',
+        priority: '1',
+        isActive: false,
+    },
+    {
+        id: '3',
+        category: 'America',
+        questionEn: 'America',
+        questionFr: 'America',
+        priority: '1',
+        isActive: false,
+    },
+    {
+        id: '4',
+        category: 'America',
+        questionEn: 'America',
+        questionFr: 'America',
+        priority: '1',
+        isActive: true,
+    },
+    {
+        id: '5',
+        category: 'America',
+        questionEn: 'America',
+        questionFr: 'America',
+        priority: '1',
+        isActive: true,
+    }
+];

@@ -1,0 +1,1 @@
+# Mono repo for MT Cloud Front-end applications

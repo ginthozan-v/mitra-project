@@ -1,0 +1,42 @@
+export const tableData = [
+    {
+      id: '1',
+      titleEN: 'Banner1',
+      titleFR: 'Banner1',
+      descriptionEN: 'Banner1',
+      descriptionFR: 'Banner1',
+      isActive: false,
+    },
+    {
+      id: '2',
+      titleEN: 'Banner1',
+      titleFR: 'Banner1',
+      descriptionEN: 'Banner1',
+      descriptionFR: 'Banner1',
+      isActive: false,
+    },
+    {
+      id: '3',
+      titleEN: 'Banner1',
+      titleFR: 'Banner1',
+      descriptionEN: 'Banner1',
+      descriptionFR: 'Banner1',
+      isActive: false,
+    },
+    {
+      id: '4',
+      titleEN: 'Banner1',
+      titleFR: 'Banner1',
+      descriptionEN: 'Banner1',
+      descriptionFR: 'Banner1',
+      isActive: false,
+    },
+    {
+      id: '5',
+      titleEN: 'Banner1',
+      titleFR: 'Banner1',
+      descriptionEN: 'Banner1',
+      descriptionFR: 'Banner1',
+      isActive: false,
+    },
+  ];

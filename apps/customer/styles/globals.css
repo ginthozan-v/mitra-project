@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .max-w-7xl {
+    max-width: 100% !important;
+  }
+  .content-wrapper {
+    @apply max-w-7xl p-4 sm:px-6 mx-auto;
+    max-width: 100% !important;
+  }
+  .content-heading {
+    @apply text-xl font-semibold;
+  }
+  .section-heading {
+    @apply text-lg font-semibold mt-3;
+  }
+  .settings-box {
+    @apply flex flex-wrap flex-col xs:flex-row space-y-3 xs:space-y-0 justify-between xs:items-center w-full py-6 px-10 md:px-16 lg:px-24 mt-6 bg-[#F2F8FB];
+  }
+  .settings-box:first-of-type {
+    @apply mt-0;
+  }
+  button {
+    @apply whitespace-nowrap;
+  }
+  .no-data {
+    @apply opacity-80 py-12;
+  }
+  .switch {
+    @apply relative inline-flex ml-3 w-12 h-6 md:w-16 md:h-8 shrink-0 cursor-pointer rounded-3xl border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75;
+  }
+  .switch .nob {
+    @apply pointer-events-none inline-block transform rounded-3xl bg-white shadow-lg ring-0 transition duration-200 ease-in-out;
+    height: 100%;
+    width: calc(50% - 1px);
+  }
+  .switch.on .nob {
+    transform: translateX(calc(100% + 2px));
+  }
+}
+
+html {
+  font-size: 16px;
+}
+
+.overflow-auto {
+  scrollbar-color: #b9b9b9 #f1f1f1;
+  scrollbar-width: thin;
+}
+
+.overflow-auto::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background-color: #b9b9b9;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.mega-menu {
+  display: none;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+}
+
+.box-shadow {
+  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+}
+
+.drop-shadow {
+  filter: drop-shadow(2px 4px 5px rgb(0 0 0 / 15%));
+}
+
+.hoverable {
+  position: static;
+}
+.hoverable:hover .mega-menu {
+  display: block;
+}
+
+.reset-style * {
+  all: revert;
+}
+
+.reset-style table {
+  border-collapse: collapse;
+}
+
+.reset-style td {
+  border: solid 1px rgb(107 114 128);
+  padding: 5px;
+}
+
+.selector input[type="text"] {
+  box-shadow: none;
+}
+
+.pagination-selector input[type="text"] {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 14px;
+  }  
+}
+
+@media screen and (max-height: 768px) {
+  html {
+    font-size: 14px;
+  }  
+}
+
+@media screen and (max-width: 991px) {
+  html {
+    font-size: 13px;
+  }  
+}
+
+@media screen and (max-height: 680px) {
+  html {
+    font-size: 13px;
+  }  
+}
+
+@media screen and (max-height: 600px) {
+  html {
+    font-size: 12.5px;
+  }  
+}

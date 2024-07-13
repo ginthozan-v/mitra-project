@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="../../js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.timers-1.2.js"></script>
+    <script type="text/javascript" src="../../js/jquery.url.js"></script>
+    <script type="text/javascript" src="../../js/error_page.js"></script>
+    <script type="text/javascript">
+      var lang = 'en';
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col bg-center bg-cover" style="background-image: url(images/auth-bg.jpg)">
+      <div class="grow grid place-items-center px-3 py-5">
+        <div class="max-w-lg w-full rounded-md bg-white overflow-hidden">
+          <div class="shadow flex items-center justify-center p-4">
+            <a href="/">
+              <img src="images/myt-logo.svg" alt="MT Cloud Portal Logo" class="h-14" />
+            </a>
+          </div>
+
+          <div class="flex flex-col items-center" style="padding-top: 60px;padding-bottom: 60px;">
+            <form name="errorForm" action="#" method="post" id="errorForm">
+              <input type="hidden" id="language" value="en" type="hidden">
+            </form>
+            <div id="errorBlock" style="color:red;"></div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="shrink-0 px-3 py-2 bg-mtgreen text-white text-center mt-5">
+        <a class="" href="/">2022 © my.t</a>
+      </footer>
+    </div>
+  </body>
+</html>

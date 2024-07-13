@@ -1,0 +1,53 @@
+{
+  "name": "mtcloud-customer",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.5.0",
+    "@mtcloud/globals": "*",
+    "@mtcloud/ui": "*",
+    "@mtcloud/utils": "*",
+    "@reach/menu-button": "^0.16.2",
+    "@tailwindcss/forms": "^0.5.0",
+    "@types/moment": "^2.13.0",
+    "@types/react-html-parser": "^2.0.2",
+    "axios": "^0.27.2",
+    "base-64": "^1.0.0",
+    "formik": "^2.2.9",
+    "libphonenumber-js": "^1.10.13",
+    "next": "12.0.8",
+    "react": "17.0.2",
+    "react-datepicker": "^4.7.0",
+    "react-dom": "17.0.2",
+    "react-hot-toast": "^2.2.0",
+    "react-html-parser": "^2.0.2",
+    "react-idle-timer": "^5.4.0",
+    "react-loader-spinner": "^5.1.7-beta.1",
+    "react-qr-code": "^2.0.8",
+    "react-select": "^5.2.2",
+    "react-slick": "^0.29.0",
+    "react-table": "^7.7.0",
+    "zustand": "^4.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.7",
+    "@types/node": "^17.0.12",
+    "@types/react": "17.0.37",
+    "autoprefixer": "^10.4.2",
+    "config": "*",
+    "eslint": "7.32.0",
+    "next-transpile-modules": "9.0.0",
+    "postcss": "^8.4.8",
+    "tailwindcss": "^3.0.23",
+    "tsconfig": "*",
+    "typescript": "^4.5.3"
+  }
+}
